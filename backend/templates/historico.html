@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <title>Histórico</title>
+</head>
+<body class="contagem-page">
+    <h2>Histórico de Contagens</h2>
+    <table>
+        <tr>
+            <th>Selecionar</th>
+            <th>Nome</th>
+            <th>Data</th>
+        </tr>
+        {% for contagem in contagens %}
+        <tr>
+            <td><input type="checkbox" value="{{ contagem[0] }}"></td>
+            <td>{{ contagem[1] }}</td>
+            <td>{{ contagem[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <button id="btn-comparar">Comparar</button>
+    <a href="/home">Voltar</a>
+    <script src="{{ url_for('static', filename='historico.js') }}"></script>
+</body>
+</html>

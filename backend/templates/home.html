@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for ('static', filename='style.css')}}">
+    <title>home</title>
+</head>
+<body>
+    <div class="camps">
+        <div class="cadastro-new">
+             <h2>Cadastar novos produtos</h2> <button class="cadastro-button" id="btn-cadastro">+</button>
+        </div>
+        <div class="contagem-new">
+            <h2>Nova contagem</h2>
+            <button class="contagem-button" id="btn-nova-contagem">+</button>
+        </div>
+        <div class="historicos-new">
+            <h2>Contagens anteriores</h2>  <a href="/historico"><button class="historicos-button">..</button></a>
+    </div>
+
+    <div class="modal" id="modal-cadastro">
+        <div class="modal_content">
+            <h2>Cadastar produtos</h2>
+            <input type="text" id='input-nome' placeholder="Nome do Produto">
+            <select id="select-classe">
+                <option value="">Classes do Produto</option>
+                <option value="refrigerante">Refrigerantes</option>
+                <option value="cerveja">Cervejas</option>
+                <option value="variados">Variados</option>
+            </select>
+            <select id="select-embalagem">
+                <option value="">Embalagem</option>
+                <option value="lata">Lata</option>
+                <option value="600">600ml</option>
+                <option value="longNeck">Long Neck</option>
+                <option value="1l">1 Litro</option>
+                <option value="2l">2 Litros</option>
+            </select>
+            <button id="btn-salvar">Salvar</button>
+            <button id="btn-fechar">Fechar</button>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-nova-contagem">
+        <div class="modal_content">
+            <h2>Nova Contagem</h2>
+            <input type="text" id="input-nome-contagem" placeholder="Ex: Março finalizada">
+            <button id="btn-iniciar-contagem">Iniciar</button>
+            <button id="btn-fechar-nova-contagem">Fechar</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

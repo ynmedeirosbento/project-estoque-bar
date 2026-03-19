@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <title>Comparativo</title>
+</head>
+<body class="contagem-page">
+    <h2>Comparativo</h2>
+    <table>
+        <tr>
+            <th>Produto</th>
+            <th>{{ nome1 }}</th>
+            <th>{{ nome2 }}</th>
+            <th>Diferença</th>
+        </tr>
+        {% for nome, qtd in itens1.items() %}
+        <tr>
+            <td>{{ nome }}</td>
+            <td>{{ qtd }}</td>
+            <td>{{ itens2.get(nome, 0) }}</td>
+            <td>{{ itens2.get(nome, 0) - qtd }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/historico">Voltar</a>
+</body>
+</htm

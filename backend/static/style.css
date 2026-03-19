@@ -1,0 +1,213 @@
+body{
+     background-color: #0a1628;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+}
+
+.login-box {
+    background-color:#132743 ;
+    padding: 40px;
+    border-radius: 10px;
+    width: 300px;
+}
+
+.input-campo{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: #1e3a5f;
+    color: white;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+
+}
+button:hover{
+        color: black;
+        background-color: rgb(52, 56, 107);
+    }
+a {
+    display: block;
+    text-align: center;
+    color: #1a73e8;
+    margin-top: 20px;
+    font-size: 14px;
+    text-decoration: none;
+    
+}
+a:hover{
+        text-decoration: underline;
+        
+    }
+
+.camps {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 300px;
+
+}
+
+.cadastro-new, .contagem-new, .historicos-new{
+    background-color: #132743;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.camps h2{
+    color: white;
+    font-size: 16px;
+    margin: 0;
+}
+.cadastro-button, .contagem-button, .historicos-button{
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_content{
+    background-color: #132743;
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal_content h2{
+    color: white;
+    margin: 0;
+}
+
+
+.modal_content input, .modal_content select {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #1e3a5f;
+    color: white;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: sacale(0.8);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.modal_content{
+    animation: fadeIn 0.9s ease;
+}
+#modal-resumo {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+#resumo-content {
+    background-color: #132743;
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    color: white;
+    animation: fadeIn 0.3s ease;
+}
+
+#tabela-resumo {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+#tabela-resumo th, #tabela-resumo td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #1e3a5f;
+}
+
+#resumo-content p {
+    color: white;
+    text-align: right;
+}
+
+#btn-fechar-resumo {
+    width: 100%;
+    padding: 10px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+#btn-finalizar{
+    margin: 50px auto 0;
+    text-align: center;
+    display: block;
+    width: 100px;
+}
+
+.contagem-page {
+    display: block;
+    padding: 20px;
+}
+
+.contagem-page table{
+    margin: 0 auto;
+}
+
+#btn-voltar {
+    margin: 50px auto 0;
+    text-align: center;
+    display: block;
+    width: 100px;
+    background-color: #1e3a5f;
+    color: white;
+    
+}
