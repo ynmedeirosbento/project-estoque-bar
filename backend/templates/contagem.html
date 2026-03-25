@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
     <title>Contagem</title>
+    <link rel="manifest" href="/static/manifest.json">
 </head>
-<body class="contagem-page">
+<body class="contagem-page" data-nome="{{ nome }}" data-data="{{ data }}">
     <table>
         <tr>
             <th>Produto</th>
             <th>Classes</th>
             <th>Embalagem</th>
             <th>Quantidade(unidade)</th>
+            <th>Excluir</th>
         </tr>
         {%for item in itens%}
          <tr>
@@ -20,6 +22,7 @@
             <td>{{ item[1] }}</td>
             <td>{{ item[2] }}</td>
             <td><input type="number" value="{{item[3]}}" min="0" data-id="{{item[4]}}"></td>
+            <td><button class="btn-excluir-item" data-id="{{ item[4] }}">🗑️</button></td>
         </tr>   
         {% endfor %}
     </table>
@@ -35,10 +38,16 @@
                 </table>
                 <p>Total: <span id="total-geral">0</span> unidades</p>
                 <button id="btn-fechar-resumo">Fechar</button>
+                <button id="btn-whatsapp">Enviar por WhatsApp 📲</button>
         </div>
     </div>
-    <button id="btn-voltar"><a href="/home">Voltar Para Página inicial</a></button>
+    <a href="/home" id="btn-voltar-contagem">Voltar</a>
     <script src="{{ url_for('static', filename='contagem.js') }}"></script>
     </script>
+    <script>
+    if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/static/service-worker.js')
+    }
+</script>
 </body>
 </html>

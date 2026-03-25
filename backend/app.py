@@ -55,9 +55,11 @@ def contagem(contagem_id):
         JOIN produtos p ON i.produto_id = p.id
         WHERE i.contagem_id = ?
     ''', (contagem_id,))
+    cursor.execute('SELECT nome, data FROM contagens WHERE id = ?', (contagem_id,))
+    info = cursor.fetchone()
     itens = cursor.fetchall()
     conexao.close()
-    return render_template('contagem.html', itens=itens, contagem_id=contagem_id)
+    return render_template('contagem.html', itens=itens, contagem_id=contagem_id, nome=info[0], data=info[1])
 
 @app.route('/atualizar-quantidade', methods=['POST'])
 def atualizar_quantidade():
@@ -113,5 +115,35 @@ def comparar(id1, id2):
     return render_template('comparar.html', 
                          nome1=nome1, nome2=nome2,
                          itens1=itens1, itens2=itens2)
+
+@app.route ('/excluir-contagem', methods=['POST'])
+def excluir_contagem ():
+    id = request.json.get('id')
+
+    conexao = sqlite3.connect('sql/estoque.db')
+    cursor = conexao.cursor()
+
+    cursor.execute('DELETE FROM itens_contagem WHERE contagem_id = ?', (id,))
+    cursor.execute('DELETE FROM contagens WHERE id = ?', (id,))
+
+    conexao.commit()
+    conexao.close()
+
+    return jsonify({'mensagem': 'Contagem excluída!'})
+
+@app.route ('/excluir-item', methods=['POST'])
+def excluir_item ():
+    id = request.json.get('id')
+
+    conexao = sqlite3.connect('sql/estoque.db')
+    cursor = conexao.cursor()
+
+    cursor.execute('DELETE FROM itens_contagem WHERE  id = ?', (id,))
+
+    conexao.commit()
+    conexao.close()
+
+    return jsonify ({'mensagem': 'Iten excluído com sucesso!'})
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host ='0.0.0.0')

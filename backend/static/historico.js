@@ -13,3 +13,19 @@ btnComparar.addEventListener('click', function() {
     
     window.location.href = '/comparar/' + id1 + '/' + id2
 })
+
+document.querySelectorAll('.btn-excluir-contagem').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        const id = this.dataset.id
+        
+        if(confirm('Tem certeza que deseja excluir esta contagem?')) {
+            fetch('/excluir-contagem', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: id })
+            }).then(function() {
+                window.location.reload()
+            })
+        }
+    })
+})

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for ('static', filename='style.css')}}">
     <title>home</title>
+    <link rel="manifest" href="/static/manifest.json">
 </head>
 <body>
     <div class="camps">
@@ -52,5 +53,10 @@
     </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+    if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/static/service-worker.js')
+    }
+</script>
 </body>
 </html>

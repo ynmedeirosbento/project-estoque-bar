@@ -5,25 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
     <title>Histórico</title>
+    <link rel="manifest" href="/static/manifest.json">
 </head>
 <body class="contagem-page">
     <h2>Histórico de Contagens</h2>
     <table>
-        <tr>
-            <th>Selecionar</th>
-            <th>Nome</th>
-            <th>Data</th>
-        </tr>
-        {% for contagem in contagens %}
-        <tr>
-            <td><input type="checkbox" value="{{ contagem[0] }}"></td>
-            <td>{{ contagem[1] }}</td>
-            <td>{{ contagem[2] }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <tr>
+        <th>Selecionar</th>
+        <th>Nome</th>
+        <th>Data</th>
+        <th>Continuar</th>
+        <th>Excluir</th>
+    </tr>
+    {% for contagem in contagens %}
+    <tr>
+        <td><input type="checkbox" value="{{ contagem[0] }}"></td>
+        <td>{{ contagem[1] }}</td>
+        <td>{{ contagem[2] }}</td>
+        <td><button class="btn-continuar" onclick="window.location.href='/contagem/{{ contagem[0] }}'">▶</button></td>
+        <td><button class="btn-excluir-contagem" data-id="{{ contagem[0] }}">🗑️</button></td>
+    </tr>
+    {% endfor %}
+</table>
     <button id="btn-comparar">Comparar</button>
-    <a href="/home">Voltar</a>
+    <a href="/home" id="btn-voltar-historico">Voltar</a>
     <script src="{{ url_for('static', filename='historico.js') }}"></script>
+    <script>
+    if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/static/service-worker.js')
+    }
+</script>
 </body>
 </html>

@@ -44,3 +44,37 @@ document.querySelectorAll('input[type=number]').forEach(function(input) {
 
 
 })
+
+document.querySelectorAll('.btn-excluir-item').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        const id = this.dataset.id
+        
+        if(confirm('Tem certeza que deseja excluir este item?')) {
+            fetch('/excluir-item', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: id })
+            }).then(function() {
+                window.location.reload()
+            })
+        }
+    })
+})
+
+const btnWhatsapp = document.getElementById('btn-whatsapp')
+
+btnWhatsapp.addEventListener('click', function() {
+    const nome = document.body.dataset.nome
+    const data = document.body.dataset.data
+    
+    let mensagem = `Contagem - ${nome}\nData: ${data}\n\n`
+    
+    document.querySelectorAll('#tabela-resumo tr:not(:first-child)').forEach(function(linha) {
+        const produto = linha.cells[0].innerText
+        const quantidade = linha.cells[1].innerText
+        mensagem += `${produto}: ${quantidade} un\n`
+    })
+    
+    const url = `https://wa.me/?text=${encodeURIComponent(mensagem)}`
+    window.open(url, '_blank')
+})

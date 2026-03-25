@@ -211,3 +211,90 @@ a:hover{
     color: white;
     
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+th {
+    background-color: #1a73e8;
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #1e3a5f;
+}
+
+tr:hover {
+    background-color: #1e3a5f;
+}
+
+.contagem-page input[type=number] {
+    background-color: #1e3a5f;
+    color: white;
+    border: 1px solid #1a73e8;
+    border-radius: 5px;
+    padding: 5px 8px;
+    width: 80px;
+    text-align: center;
+}
+
+#btn-comparar {
+    display: block;
+    margin: 20px auto;
+    width: 150px;
+    padding: 10px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#btn-voltar-historico {
+    display: block;
+    margin: 10px auto;
+    width: 150px;
+    padding: 10px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-continuar, .btn-excluir-contagem {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#btn-voltar-contagem {
+    display: block;
+    margin: 10px auto;
+    width: 150px;
+    padding: 10px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: none;
+    outline: none;
+}
+h2 {
+    color: white;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-bottom: 20px;
+}
